@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edson Gomes Braz — Portfólio</title>
+  <meta name="description" content="Engenheiro da Computação e de Segurança do Trabalho. Projetos, experiência, cursos e contato." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <meta property="og:title" content="Portfólio — Edson Gomes Braz" />
+  <meta property="og:description" content="Engenharia, Dados e SST: projetos, vídeos e contatos" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/cover.jpg" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    :root{
+      --bg: #0b1220; /* fundo escuro elegante */
+      --fg: #eaf2ff; /* texto principal */
+      --muted: #9fb3d1; /* texto secundário */
+      --card: #0f172a; /* blocos */
+      --accent: #0ea5e9; /* ciano */
+      --accent-2: #22d3ee; /* ciano claro */
+      --ring: rgba(34,211,238,.3);
+      --shadow: 0 10px 30px rgba(2,8,23,.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f8fafc; --fg:#0b1220; --muted:#475569; --card:#ffffff; --accent:#0284c7; --accent-2:#0891b2; --ring:rgba(8,145,178,.25); }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background: linear-gradient(180deg, #00CED1, #20B2AA);
+ color:var(--fg); line-height:1.65}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{color:var(--accent-2)}
+    img{max-width:100%; display:block}
+
+    /* Header / Hero */
+    .hero{position:relative; overflow:hidden; isolation:isolate;}
+    .hero::before{content:""; position:absolute; inset:-20% -10% auto -10%; height:70%; background: radial-gradient(600px 300px at 10% 20%, rgba(14,165,233,.25), transparent 60%), radial-gradient(600px 300px at 90% 10%, rgba(34,211,238,.18), transparent 60%); filter:blur(30px); z-index:-1}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+    .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid color-mix(in oklab, var(--fg) 12%, transparent)}
+    .topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
+    .brand .logo{inline-size:40px; aspect-ratio:1; border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow:var(--shadow)}
+    nav{display:flex; gap:12px; flex-wrap:wrap}
+    nav a{padding:8px 12px; border-radius:999px; color:var(--fg); border:1px solid color-mix(in oklab, var(--fg) 10%, transparent)}
+    nav a:hover{background:color-mix(in oklab, var(--fg) 6%, transparent)}
+    .cta-btn{padding:10px 16px; border-radius:12px; background:var(--accent); color:#001018; font-weight:700; box-shadow:var(--shadow)}
+
+    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:30px; padding:56px 0 30px}
+    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr; padding:30px 0} }
+    .title{font-family:"Playfair Display",serif; font-size:clamp(28px, 6vw, 56px); line-height:1.1; margin:0 0 8px}
+    .subtitle{color:var(--muted); margin:0 0 22px; font-size:clamp(16px, 2.2vw, 18px)}
+    .hero-card{background:var(--card); border:1px solid color-mix(in oklab, var(--fg) 12%, transparent); padding:22px; border-radius:18px}
+
+    /* Sections */
+    section{padding:40px 0}
+    .section-title{font-size:24px; margin:0 0 18px}
+    .cards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px}
+    @media (max-width:900px){ .cards{grid-template-columns:1fr} }
+    .card{background:var(--card); border:1px solid color-mix(in oklab, var(--fg) 12%, transparent); padding:18px; border-radius:16px; box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
+
+    /* Timeline (Formação / Experiência) */
+    .timeline{display:grid; gap:12px}
+    .item{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; padding:12px 14px; border:1px solid color-mix(in oklab, var(--fg) 12%, transparent); border-radius:12px; background:linear-gradient(180deg, color-mix(in oklab, var(--card) 95%, var(--accent) 5%), var(--card))}
+    .item span{white-space:nowrap; color:var(--muted)}
+
+    /* Video grid */
+    .video-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+    @media (max-width:900px){ .video-grid{grid-template-columns:1fr} }
+    .video-grid iframe{width:100%; aspect-ratio:16/9; border:0; border-radius:14px; background:#000}
+
+    /* Footer */
+    footer{padding:40px 0; border-top:1px solid color-mix(in oklab, var(--fg) 10%, transparent); color:var(--muted)}
+
+    /* Floating button */
+    .floating-button{position:fixed; right:18px; bottom:18px; inline-size:56px; aspect-ratio:1; display:grid; place-items:center; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#001018; font-weight:800; text-decoration:none; box-shadow:var(--shadow)}
+
+    /* Modal */
+    .modal{position:fixed; inset:0; display:none; background:rgba(2,8,23,.6); padding:20px; z-index:60}
+    .modal[open]{display:grid; place-items:center}
+    .modal .panel{inline-size:min(560px, 100%); background:var(--card); border:1px solid color-mix(in oklab, var(--fg) 12%, transparent); border-radius:18px; padding:20px; box-shadow:var(--shadow)}
+    .modal .close{position:absolute; inset:16px 20px auto auto; cursor:pointer; font-size:22px}
+
+    /* Utilities */
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    @media (max-width:900px){ .grid-2{grid-template-columns:1fr} }
+    .badge{display:inline-block; padding:6px 10px; border-radius:999px; background:color-mix(in oklab, var(--fg) 8%, transparent); border:1px solid color-mix(in oklab, var(--fg) 14%, transparent); color:var(--muted); font-size:12px}
+    .social{display:flex; gap:10px; flex-wrap:wrap}
+    .social a{display:inline-grid; place-items:center; inline-size:38px; aspect-ratio:1; border-radius:12px; background:color-mix(in oklab, var(--fg) 6%, transparent); border:1px solid color-mix(in oklab, var(--fg) 10%, transparent)}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Edson Gomes Braz",
+    "jobTitle":"Engenheiro da Computação e de Segurança do Trabalho",
+    "url":"https://seu-dominio.com",
+    "sameAs":["https://www.linkedin.com/in/edsonbrazdados/","https://github.com/ppelino","https://www.instagram.com/engestedsonbraz/"],
+    "email":"mailto:engestedsonbraz@gmail.com",
+    "telephone":"+5511977198220"
+  }
+  </script>
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand"><span class="logo" aria-hidden="true"></span> Edson Gomes Braz</div>
+      <nav aria-label="Navegação principal">
+        <a href="#perfil">Perfil</a>
+        <a href="#contato">Contato</a>
+        <a href="#formacao">Formação</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#video">Vídeos</a>
+        <a href="https://github.com/ppelino" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <a class="cta-btn" href="#contato">Contrate-me</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <img src="Edson.jpg" alt="Foto de Edson Gomes Braz" style="width:140px; height:140px; border-radius:50%; object-fit:cover; box-shadow:0 0 12px rgba(0,0,0,0.3); margin-bottom:15px;">
+<h1 class="title">Engenharia, Dados & SST</h1>
+        <p class="subtitle">Professor e Engenheiro com foco em <strong>análise de dados</strong>, <strong>automação em Python</strong> e <strong>Segurança do Trabalho</strong>. Aqui você encontra meus projetos, formações e canais de contato.</p>
+        <div class="social" aria-label="Redes sociais">
+          <a href="https://api.whatsapp.com/send?phone=5511977198220" aria-label="WhatsApp" rel="noopener" target="_blank">💬</a>
+          <a href="https://www.linkedin.com/in/edsonbrazdados/" aria-label="LinkedIn" rel="noopener" target="_blank">in</a>
+          <a href="https://www.instagram.com/engestedsonbraz/" aria-label="Instagram" rel="noopener" target="_blank">IG</a>
+          <a href="https://github.com/ppelino" aria-label="GitHub" rel="noopener" target="_blank">GH</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <p class="muted">Disponível para consultorias em:</p>
+        <div class="cards" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="card"><strong>Dashboards</strong><br><span class="muted">Power BI & Python</span></div>
+          <div class="card"><strong>AppSheet</strong><br><span class="muted">Automação de fluxos</span></div>
+          <div class="card"><strong>SST</strong><br><span class="muted">PCMSO / PGR / LTCAT</span></div>
+        </div>
+        <div style="margin-top:12px" class="muted">📍 São Paulo, Brasil • 📧 engestedsonbraz@gmail.com</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perfil -->
+  <section id="perfil">
+    <div class="container">
+      <h2 class="section-title">Perfil</h2>
+      <div class="card">
+        <p>Olá! Sou <strong>Edson Gomes</strong>. Atuo há 25+ anos na educação e venho desenvolvendo soluções de <em>data analytics</em> e <em>software</em> para <strong>Segurança do Trabalho</strong> e gestão escolar. Meu foco é transformar dados em decisões com impacto real.</p>
+        <div class="badge">Engenharia • Dados • SST</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="container">
+      <h2 class="section-title">Contato</h2>
+      <div class="grid-2">
+        <div class="card">
+          <p>📞 <a href="tel:+5511977198220">(11) 97719‑8220</a><br>📧 <a href="mailto:engestedsonbraz@gmail.com">engestedsonbraz@gmail.com</a></p>
+          <p class="muted">Preferências: WhatsApp e e‑mail. Respondo em horário comercial (Brasília).</p>
+          <button class="cta-btn" onclick="openModal()">Fale comigo</button>
+        </div>
+        <div class="card">
+          <p class="muted">Links rápidos</p>
+          <div class="social">
+            <a href="https://api.whatsapp.com/send?phone=5511977198220" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+            <a href="https://www.linkedin.com/in/edsonbrazdados/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/engestedsonbraz/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://github.com/ppelino" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formação -->
+  <section id="formacao">
+    <div class="container">
+      <h2 class="section-title">Formação</h2>
+      <div class="timeline">
+        <div class="item"><div>Licenciatura em Matemática</div><span>1998–2000</span></div>
+        <div class="item"><div>Bacharelado em Engenharia da Computação</div><span>2017–2022</span></div>
+        <div class="item"><div>Pós-graduação: IA & Machine Learning</div><span>ago/2022–jun/2023</span></div>
+        <div class="item"><div>Pós-graduação: Eng. & Segurança do Trabalho</div><span>jun/2023–dez/2023</span></div>
+        <div class="item"><div>MBA: Big Data & Inteligência Competitiva</div><span>fev/2024–set/2024</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiência -->
+  <section id="experiencia">
+    <div class="container">
+      <h2 class="section-title">Experiência Profissional</h2>
+      <div class="timeline">
+        <div class="item"><div>Mentor de Tecnologia — DIO</div><span>6 meses</span></div>
+        <div class="item"><div>Professor de Robótica — GOV. SP</div><span>10 meses</span></div>
+        <div class="item"><div>PROATI — GOV. SP</div><span>8 meses</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cursos (amostra enxuta) -->
+  <section id="cursos">
+    <div class="container">
+      <h2 class="section-title">Cursos Selecionados</h2>
+      <div class="cards">
+        <div class="card"><strong>Python para Finanças</strong><br><span class="muted">IA Expert • 16 h • 2023</span></div>
+        <div class="card"><strong>Power BI do Básico ao Avançado</strong><br><span class="muted">Udemy • 10 h • 2024</span></div>
+        <div class="card"><strong>Banco de Dados SQL</strong><br><span class="muted">Udemy • 8 h • 2025</span></div>
+      </div>
+      <p class="muted" style="margin-top:10px">A lista completa pode ser baixada em PDF/CSV (opcional) ou exibida sob demanda.</p>
+    </div>
+  </section>
+
+  <!-- Infográfico -->
+  <section>
+    <div class="container">
+      <h3 class="section-title">Infográfico</h3>
+      <div class="card"><img src="infografico_cursos.png" alt="Distribuição de cursos e formações" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- Vídeos -->
+  <section id="video">
+    <div class="container">
+      <h2 class="section-title">Vídeos</h2>
+      <div class="video-grid">
+        <iframe loading="lazy" src="https://www.youtube.com/embed/lD7qD58bjF4" title="Vídeo 1" allowfullscreen></iframe>
+        <iframe loading="lazy" src="https://www.youtube.com/embed/lCRtIXFn9eM" title="Vídeo 2" allowfullscreen></iframe>
+        <iframe loading="lazy" src="https://www.youtube.com/embed/agAPvAvBXwQ" title="Vídeo 3" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          © 2025 <strong>Edson Gomes Braz</strong>. Todos os direitos reservados.
+        </div>
+        <div style="text-align:right">
+          <a href="#top" aria-label="Voltar ao topo">Voltar ao topo ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante -->
+  <a href="#contato" class="floating-button" aria-label="Abrir contato">✉️</a>
+
+  <!-- Modal de contato (Formspree) -->
+  <dialog id="contact-modal" class="modal" aria-label="Formulário de contato">
+    <div class="panel">
+      <button class="close" onclick="closeModal()" aria-label="Fechar">×</button>
+      <h3 style="margin-top:0">Fale Conosco</h3>
+      <form action="https://formspree.io/f/mldgplzb" method="POST">
+        <div class="grid-2">
+          <label>Seu nome<br><input name="name" required style="width:100%; padding:10px; border-radius:10px; border:1px solid color-mix(in oklab, var(--fg) 15%, transparent)"></label>
+          <label>Seu e-mail<br><input type="email" name="email" required style="width:100%; padding:10px; border-radius:10px; border:1px solid color-mix(in oklab, var(--fg) 15%, transparent)"></label>
+        </div>
+        <label style="display:block; margin-top:10px">Sua mensagem<br>
+          <textarea name="message" required rows="5" style="width:100%; padding:10px; border-radius:10px; border:1px solid color-mix(in oklab, var(--fg) 15%, transparent)"></textarea>
+        </label>
+        <input type="hidden" name="_subject" value="Contato via Portfólio" />
+        <button class="cta-btn" type="submit" style="margin-top:12px">Enviar</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script>
+    const modal = document.getElementById('contact-modal');
+    function openModal(){ modal.showModal(); }
+    function closeModal(){ modal.close(); }
+
+    // Abre modal ao clicar no botão flutuante se preferir formulário
+    document.querySelector('.floating-button').addEventListener('click', (e)=>{
+      // se quiser rolar ao contato, remova as 2 linhas abaixo e mantenha apenas o href
+      e.preventDefault();
+      openModal();
+    });
+
+    // Observa iframes para lazy policy extra (não estrito, apenas exemplo)
+    const iframes = document.querySelectorAll('iframe[loading="lazy"]');
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.src = e.target.src; } });
+    }, {rootMargin: '200px'});
+    iframes.forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
